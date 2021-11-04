@@ -1,4 +1,4 @@
-<canvas id="canvas" width="600" height="400" tabindex="1"></canvas>
+<canvas id="canvas" width="1350" height="630" tabindex="1"></canvas>
 <script>
 // Collect The Square game
 
@@ -9,11 +9,12 @@ var context = canvas.getContext('2d');
 
 // Your score
 var score = 0;
+var color = '#00FF00';
 
 // Properties for your square
 var x = 50; // X position
 var y = 100; // Y position
-var speed = 6; // Distance to move each frame
+var speed = 15; // Distance to move each frame
 var sideLength = 50; // Length of each side of the square
 
 // FLags to track which keys are pressed
@@ -116,6 +117,9 @@ function endGame() {
 
 // Move the target square to a random position
 function moveTarget() {
+    if (score >5){
+         color = '#'+ Math.floor(Math.random()*16777215).toString(16);
+    }
   targetX = Math.round(Math.random() * canvas.width - targetLength);
   targetY = Math.round(Math.random() * canvas.height - targetLength)
 }
@@ -123,7 +127,7 @@ function moveTarget() {
 // Clear the canvas
 function erase() {
   context.fillStyle = '#FFFFFF';
-  context.fillRect(0, 0, 600, 400);
+  context.fillRect(0, 0, 1350, 630);
 }
 
 // The main draw loop
@@ -167,9 +171,20 @@ function draw() {
   // Draw the square
   context.fillStyle = '#FF0000';
   context.fillRect(x, y, sideLength, sideLength);
+
   // Draw the target 
-  context.fillStyle = '#00FF00';
+  context.fillStyle = color;
+  //context.fillStyle = '#00FF00';
+  
+
+    //context.fillStyle = '#a0f20c';
   context.fillRect(targetX, targetY, targetLength, targetLength);
+  if (score >=10){
+    context.beginPath();
+    context.arc(targetX, targetY, targetLength, 0, 2 * Math.PI);
+    context.fill();
+  }
+  //
   // Draw the score and time remaining
   context.fillStyle = '#000000';
   context.font = '24px Arial';
