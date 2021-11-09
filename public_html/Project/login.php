@@ -58,7 +58,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         //Nothing to output here, flash will do it
         //can likely flip the if condition
         //echo "<pre>" . var_export($errors, true) . "</pre>";
-    } else {
+    } else { 
         //TODO 4
         $db = getDB();
         $stmt = $db->prepare("SELECT id, username, email, password from Users where email = :email");
