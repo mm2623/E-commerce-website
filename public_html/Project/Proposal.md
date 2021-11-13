@@ -23,87 +23,130 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-- [ ] \(mm/dd/yyyy of completion) User will be able to register a new account
+- [ ] \(11/11/2021) User will be able to register a new account
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/register.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary):
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/26):
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion)User will be able to login to their account (given they enter the correct credentials)
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141394946-a86aaee5-6b0f-49e1-be56-59ad8909e002.png))
+        - Screenshot #1 Email is required and must be validated.
+      - Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141600740-f082080b-3e73-4a04-9508-348491c5c689.png))
+        - Screenshot #2 User Table with Id, username, email, password (60 characters), created, modified.
+      - Screenshot #3 (![image](https://user-images.githubusercontent.com/90267420/141600800-f04bf441-8d29-463c-9c17-7b883d3a2725.png))
+        - Screenshot #3 Password must be hashed.
+      - Screenshot #4 (![image](https://user-images.githubusercontent.com/90267420/141601616-2c86921f-e480-44de-afee-0c6706acb6b2.png))
+        - Screenshot #4 Email should be unique.
+      - Screenshot #5 (![image](https://user-images.githubusercontent.com/90267420/141601616-2c86921f-e480-44de-afee-0c6706acb6b2.png))
+        - Screenshot #5 Username should be unique
+      - Screenshot #6 (![image](https://user-images.githubusercontent.com/90267420/141392722-87104257-ce3f-4cbb-883c-0ea84ac37acf.png)
+        ![image](https://user-images.githubusercontent.com/90267420/141392819-7a264baf-29e1-46b4-b5df-37f62b80896d.png))
+        - Screenshot #6 System let user know if username or email is taken and allow the user to correct the error without wiping/clearing the form.
+
+- [ ] \(11/11/2021)User will be able to login to their account (given they enter the correct credentials)
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/login.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/28)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to logout
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141387628-e329422c-3585-439c-a44c-7371e24f7c28.png))
+        - Screenshot #1 User can login with email or username.
+        Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141392243-abac33a4-a648-495f-a2f5-1d064e7b5336.png))
+        (![image](https://user-images.githubusercontent.com/90267420/141392115-100f225f-e3a9-4ed7-8316-41eabc536c71.png))
+        - Screenshot #2 User see friendly error messages when an account either doesn’t exist or if passwords don’t match.
+      - Screenshot #3 (![image](https://user-images.githubusercontent.com/90267420/141605858-57860ae1-a11e-40a9-8e79-556a530d310c.png))
+        - Screenshot #3 Logging in should fetch the user’s details (and roles) and save them into the session.
+      - Screenshot #4 (![image](https://user-images.githubusercontent.com/90267420/141387628-e329422c-3585-439c-a44c-7371e24f7c28.png))
+        - Screenshot #4 User will be directed to a landing page(home page) upon login
+
+- [ ] \(11/11/2021) User will be able to logout
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/logout.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/25)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Basic security rules implemented
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141387674-dc548003-8022-49e8-bdfb-b649d670cde8.png))
+        - Screenshot #1 Logging out redirect to login page
+        Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141387674-dc548003-8022-49e8-bdfb-b649d670cde8.png))
+        - Screenshot #2 User should see a message that they’ve successfully logged out
+      - Screenshot #3 (paste the image so it uploads to github) (repeat as necessary)
+        - Screenshot #3 Session should be destroyed (so the back button doesn’t allow them access back in
+
+- [ ] \(11/11/2021) Basic security rules implemented
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/home.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/27)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Basic Roles implemented
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141606098-c04dc7eb-fc4e-498e-ac0b-5cfbd73a0e7d.png))
+        - Screenshot #1 Authentication that Function to check if user is logged in and call on appropriate pages that only allow logged in users.
+        Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141606164-7eec7521-8238-4abb-b8ab-7642f0972dc7.png))
+        - Screenshot #2 Have a roles table. (id, name, description, is_active, modified, created)
+
+- [ ] \(11/11/2021) Basic Roles implemented
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/home.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/27)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Site should have basic styles/theme applied; everything should be styled
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141606164-7eec7521-8238-4abb-b8ab-7642f0972dc7.png))
+        - Screenshot #1 Have a Roles table	(id, name, description, is_active, modified, created)
+        Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141606247-0bea2678-d3aa-4bed-9703-7a36244295d6.png))
+        - Screenshot #2 Have a User Roles table (id, user_id, role_id, is_active, created, modified)
+      - Screenshot #3 (![image](https://user-images.githubusercontent.com/90267420/141606098-c04dc7eb-fc4e-498e-ac0b-5cfbd73a0e7d.png))
+        - Screenshot #3 A function to check if a user has a specific role
+
+- [ ] \(11/11/2021) Site should have basic styles/theme applied; everything should be styled
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/styles.css)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/29)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) Any output messages/errors should be “user friendly”
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141387628-e329422c-3585-439c-a44c-7371e24f7c28.png))
+        - Screenshot #1 Site have basic styles/theme applied to forms/input, navigation bar, etc
+
+- [ ] \(11/11/2021) Any output messages/errors should be “user friendly”
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/partials/flash.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/24)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to see their profile
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141387628-e329422c-3585-439c-a44c-7371e24f7c28.png)) (![image](https://user-images.githubusercontent.com/90267420/141387674-dc548003-8022-49e8-bdfb-b649d670cde8.png)) (![image](https://user-images.githubusercontent.com/90267420/141391759-2e57cda4-779c-4368-b9a2-2143e8cb24d1.png)) (![image](https://user-images.githubusercontent.com/90267420/141392015-32443ec2-62d1-4deb-86d8-de57129a32d8.png)) (![image](https://user-images.githubusercontent.com/90267420/141392115-100f225f-e3a9-4ed7-8316-41eabc536c71.png)) (![image](https://user-images.githubusercontent.com/90267420/141392243-abac33a4-a648-495f-a2f5-1d064e7b5336.png)) (![image](https://user-images.githubusercontent.com/90267420/141392722-87104257-ce3f-4cbb-883c-0ea84ac37acf.png)) (![image](https://user-images.githubusercontent.com/90267420/141392819-7a264baf-29e1-46b4-b5df-37f62b80896d.png))
+        - Screenshot #1 Some outputed user friendly messages.
+
+- [ ] \(11/11/2021) User will be able to see their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/profile.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/25)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
-- [ ] \(mm/dd/yyyy of completion) User will be able to edit their profile
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141606712-1c995cb7-4824-4eee-81e8-4501336ddd47.png))
+        - Screenshot #1 User are able to see their Email, username, etc.
+
+- [ ] \(11/11/2021) User will be able to edit their profile
   -  List of Evidence of Feature Completion
-    - Status: Pending (Completed, Partially working, Incomplete, Pending)
-    - Direct Link: (Direct link to the file or files in heroku prod for quick testing (even if it's a protected page))
+    - Status: Completed
+    - Direct Link: (https://mm2623-prod.herokuapp.com/Project/profile.php)
     - Pull Requests
-      - PR link #1 (repeat as necessary)
+      - PR link #1 (https://github.com/mm2623/IT202-007/pull/25)
     - Screenshots
-      - Screenshot #1 (paste the image so it uploads to github) (repeat as necessary)
-        - Screenshot #1 description explaining what you're trying to show
+      - Screenshot #1 (![image](https://user-images.githubusercontent.com/90267420/141606920-8a2c6d3c-4f9b-4b87-81cb-6f75366aa0f6.png)) 
+      (![image](https://user-images.githubusercontent.com/90267420/141606946-8b37a0db-cb2d-4c79-9bce-c616a3577a54.png))
+        - Screenshot #1 User will be able to change username/email and should properly check to see if it’s available before allowing the change.
+        Screenshot #2 (![image](https://user-images.githubusercontent.com/90267420/141606876-e00c11e9-fa52-40ac-9810-995e45c216a3.png))
+        - Screenshot #2 Any other fields should be properly validated
+      - Screenshot #3 (![image](https://user-images.githubusercontent.com/90267420/141606876-e00c11e9-fa52-40ac-9810-995e45c216a3.png)) 
+      (![image](https://user-images.githubusercontent.com/90267420/141606843-4f8bb41c-901f-47f7-9e02-69dfda89b567.png))
+        - Screenshot #3 Allow password reset (only if the existing correct password is provided)
+
 - Milestone 2
 - Milestone 3
 - Milestone 4

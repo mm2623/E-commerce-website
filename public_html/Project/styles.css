@@ -57,10 +57,3 @@ input{width: 10%;}
 input{height: 5%;}
 input{justify-content: space-between;}
 input{color: indianred; }
-.label{background-color: yellow;}
-.preference {
-    display: flex;
-    justify-content: space-between;
-    width: 10%;
-    height: 5%;
-}
