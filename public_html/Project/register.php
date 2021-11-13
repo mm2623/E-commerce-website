@@ -64,7 +64,7 @@ if (isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["confirm
     }
     if (empty($confirm)) {
         flash("Confirm password must not be empty", "danger");
-        $hasError = true;
+        $hasError = true; 
     }
     if (strlen($password) < 8) {
         flash("Password too short", "danger");
