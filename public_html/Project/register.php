@@ -19,7 +19,7 @@ reset_session();
         <label for="confirm">Confirm</label>
         <input type="password" name="confirm" required minlength="8" />
     </div>
-    <input type="submit" value="Register" />
+    <input type="submit" id="sub" value="Register" />
 </form>
 <script>
     function validate(form) {
