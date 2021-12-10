@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    color: black;
+    background-color: mediumspringgreen;
+}
+nav {
+    background-color: rgb(0, 255, 55);  
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 20px;
+}*/
+svg{
+    margin-left: 5px;
+}
+h1{
+    margin-left: 5px;
+}
+#text{
+    margin-left: 5px;
+}
+/*nav li a,.navbar-expand-lg{
+    color: var(--bs-orange) !important;
+    text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
+
+}
+.btn-primary{margin-bottom: 2px;}*/
+.dropdown-menu{
+    justify-content: space-between;
+    background-color: rgb(0, 255, 76);
+    padding: 15px 15px;
+}
+.navbar-light{
+    justify-content: space-between;
+    background-color: rgb(0, 255, 76);
+    padding: 0px 50px;
+    
+}
+.th{text-align:right}
+.btn-primary{margin-bottom: 2;}
+.body1{padding: 0px 30px; margin-top: 30;}
+.body{padding: 0px 30px;}
+.img{padding: 0px 30px;}
+nav li{
+    list-style: none;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-right: 60px;
+    padding: 6px 0px;
+}/*
+nav ul li a{
+    color: #1d1d24;
+    position: absolute;
+    padding: 5px 0;
+}
+nav ul li a:hover{
+    color: #05ffde;
+}
+nav ul li a:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #05ffde; 
+    transition: .3s;
+    bottom: 0;
+}
+nav ul li a:hover:after{
+    width: 100%;
+}*/
+label { display: inline-block; width: 130px; text-align: right; }
+#sub{ display: inline-block; width: 130px; text-align: center; margin-left: 150; margin-top: 10; background-color: #05ffde; border:groove;}
+input{
+    color: indianred;
+    margin-left: 10;
+} 
+table{margin-left: 10;}
+label{
+    text-transform: capitalize;
+}
+.scroll-content{
+    height: 70vh;
+    overflow: auto;
+}
+/*input {display: inline-block;}
+input{border-radius: 100;}
+input{width: 10%;}
+input{height: 5%;}
+input{justify-content: space-between;}
+input{color: indianred; }*/
