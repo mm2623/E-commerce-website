@@ -88,6 +88,87 @@ function flash($msg = "", $color = "info")
         array_push($_SESSION['flash'], $message);
     }
 }
+
+function getMessages()
+{
+    if (isset($_SESSION['flash'])) {
+        $flashes = $_SESSION['flash'];
+        $_SESSION['flash'] = array();
+        return $flashes;
+    }
+    return array();
+}
+//TODO generic helpers
+function reset_session()
+{
+    session_unset();
+    session_destroy();
+    session_start();
+}
+function users_check_duplicate($errorInfo)
+{
+    if ($errorInfo[1] === 1062) {
+        //https://www.php.net/manual/en/function.preg-match.php
+        preg_match("/Users.(\w+)/", $errorInfo[2], $matches);
+        if (isset($matches[1])) {
+            flash("The chosen " . $matches[1] . " is not available.", "warning");
+        } else {
+            //TODO come up with a nice error message
+            flash("<pre>" . var_export($errorInfo, true) . "</pre>");
+        }
+    } else {
+        //TODO come up with a nice error message
+        flash("<pre>" . var_export($errorInfo, true) . "</pre>");
+    }
+}
+function get_url($dest)
+{
+    global $BASE_PATH;
+    if (str_starts_with($dest, "/")) {
+        //handle absolute path
+        return $dest;
+    }
+    //handle relative path
+    return $BASE_PATH . $dest;
+}
+// Account Helpers
+/**
+ * Generates a unique string based on required length.
+ * The length given will determine the likelihood of duplicates
+ */
+function get_random_str($length)
+{
+    //https://stackoverflow.com/a/13733588
+    //$bytes = random_bytes($length / 2);
+    //return bin2hex($bytes);
+
+    //https://stackoverflow.com/a/40974772
+    return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 36)), 0, $length);
+}
+function get_user_account_id()
+{
+    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
+        return (int)se($_SESSION["user"]["account"], "id", 0, false);
+    }
+    return 0;
+}
+
+function get_columns($table)
+{
+    $table = se($table, null, null, false);
+    $db = getDB();
+    $query = "SHOW COLUMNS from $table"; //be sure you trust $table
+    $stmt = $db->prepare($query);
+    $results = [];
+    try {
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "<pre>" . var_export($e, true) . "</pre>";
+    }
+    return $results;
+}
+
 function update_cart($item_id, $user_id, $quantity)
 {
     error_log("add_item() Item ID: $item_id, User_id: $user_id, Quantity $quantity");
