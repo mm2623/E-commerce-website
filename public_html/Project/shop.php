@@ -115,7 +115,7 @@ try {
                         "Content-type": "application/x-www-form-urlencoded",
                         "X-Requested-With": "XMLHttpRequest",
                     },
-                    body: data
+                    body: data 
                 })
                 .then(response => response.json())
                 .then(data => {
