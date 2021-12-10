@@ -145,84 +145,122 @@ function get_random_str($length)
     //https://stackoverflow.com/a/40974772
     return substr(str_shuffle(str_repeat('0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 36)), 0, $length);
 }
-/**
- * Will fetch the account of the logged in user, or create a new one if it doesn't exist yet.
- * Exists here so it may be called on any desired page and not just login
- * Will populate/refresh $_SESSION["user"]["account"] regardless.
- * Make sure this is called after the session has been set
- */
-function get_or_create_account()
-{
-    if (is_logged_in()) {
-        //let's define our data structure first
-        //id is for internal references, account_number is user facing info, and balance will be a cached value of activity
-        $account = ["id" => -1, "account_number" => false, "balance" => 0];
-        //this should always be 0 or 1, but being safe
-        $query = "SELECT id, account, balance from Accounts where user_id = :uid LIMIT 1";
-        $db = getDB();
-        $stmt = $db->prepare($query);
-        try {
-            $stmt->execute([":uid" => get_user_id()]);
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!$result) {
-                //account doesn't exist, create it
-                $created = false;
-                //we're going to loop here in the off chance that there's a duplicate
-                //it shouldn't be too likely to occur with a length of 12, but it's still worth handling such a scenario
-
-                //you only need to prepare once
-                $query = "INSERT INTO Accounts (account, user_id) VALUES (:an, :uid)";
-                $stmt = $db->prepare($query);
-                $user_id = get_user_id(); //caching a reference
-                $account_number = "";
-                while (!$created) {
-                    try {
-                        $account_number = get_random_str(12);
-                        $stmt->execute([":an" => $account_number, ":uid" => $user_id]);
-                        $created = true; //if we got here it was a success, let's exit
-                        flash("Welcome! Your account has been created successfully", "success");
-                    } catch (PDOException $e) {
-                        $code = se($e->errorInfo, 0, "00000", false);
-                        //if it's a duplicate error, just let the loop happen
-                        //otherwise throw the error since it's likely something looping won't resolve
-                        //and we don't want to get stuck here forever
-                        if (
-                            $code !== "23000"
-                        ) {
-                            throw $e;
-                        }
-                    }
-                }
-                //loop exited, let's assign the new values
-                $account["id"] = $db->lastInsertId();
-                $account["account_number"] = $account_number;
-            } else {
-                //$account = $result; //just copy it over
-                $account["id"] = $result["id"];
-                $account["account_number"] = $result["account"];
-                $account["balance"] = $result["balance"];
-            }
-        } catch (PDOException $e) {
-            flash("Technical error: " . var_export($e->errorInfo, true), "danger");
-        }
-        $_SESSION["user"]["account"] = $account; //storing the account info as a key under the user session
-        //Note: if there's an error it'll initialize to the "empty" definition around line 161
-
-    } else {
-        flash("You're not logged in", "danger");
-    }
-}
-function get_account_balance()
-{
-    if (is_logged_in() && isset($_SESSION["user"]["account"])) {
-        return (int)se($_SESSION["user"]["account"], "balance", 0, false);
-    }
-    return 0;
-}
 function get_user_account_id()
 {
     if (is_logged_in() && isset($_SESSION["user"]["account"])) {
         return (int)se($_SESSION["user"]["account"], "id", 0, false);
     }
     return 0;
+}
+
+function get_columns($table)
+{
+    $table = se($table, null, null, false);
+    $db = getDB();
+    $query = "SHOW COLUMNS from $table"; //be sure you trust $table
+    $stmt = $db->prepare($query);
+    $results = [];
+    try {
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo "<pre>" . var_export($e, true) . "</pre>";
+    }
+    return $results;
+}
+
+function update_cart($item_id, $user_id, $quantity)
+{
+    error_log("add_item() Item ID: $item_id, User_id: $user_id, Quantity $quantity");
+    $db = getDB();
+    $stmt = $db->prepare("UPDATE Cart set desired_quantity = :q where product_id = :cart_id and user_id=:uid");
+    try {
+        $stmt->execute([":q" => $quantity,":cart_id" => $item_id ,":uid"=>$user_id]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error adding $quantity of $item_id to user $user_id: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function delete_item($item_id, $user_id)
+{
+    error_log("add_item() Item ID: $item_id, User_id: $user_id");
+    $db = getDB();
+    $stmt = $db->prepare("DELETE FROM Cart where product_id = :cart_id and user_id=:uid");
+    try {
+        $stmt->execute([":cart_id" => $item_id, ":uid" =>$user_id]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error deleting $item_id to user $user_id: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function empty_cart($user_id)
+{
+    error_log("add_item() Item ID: User_id: $user_id");
+    $db = getDB();
+    $stmt = $db->prepare("DELETE FROM Cart where user_id = :uid");
+    try {
+        $stmt->execute([":uid" =>$user_id]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error empting cart of $user_id: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function add_to_cart($item_id, $user_id, $quantity, $cost)
+{
+    //I'm using negative values for predefined items so I can't validate >= 0 for item_id
+    if ($user_id <= 0 || $quantity === 0) {
+        error_log("add_to_cart() Item ID: $item_id, User_id: $user_id, Quantity $quantity");
+        return;
+    }
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO Cart (product_id, user_id, desired_quantity, unit_cost) VALUES (:iid, :uid, :q, :uc) ON DUPLICATE KEY UPDATE desired_quantity = desired_quantity + :q, unit_cost=:uc"); 
+    //$stmt = $db->prepare("INSERT INTO Cart (product_id, user_id, desired_quantity) VALUES (:iid, :uid, :q) ON DUPLICATE KEY UPDATE quantity = quantity + :q");
+    try {
+        $stmt->execute([":iid" => $item_id, ":uid" => $user_id, ":q" => $quantity, ":uc" => $cost]);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error recording purchase $quantity of $item_id for user $user_id: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+
+/**
+ * @param $query must have a column called "total"
+ * @param array $params
+ * @param int $per_page
+ */
+function paginate($query, $params = [], $per_page = 10)
+{
+    global $page; //will be available after function is called
+    try {
+        $page = (int)se($_GET, "page", 1, false);
+    } catch (Exception $e) {
+        //safety for if page is received as not a number
+        $page = 1;
+    }
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("paginate error: " . var_export($e, true));
+    }
+    $total = 0;
+    if (isset($result)) {
+        $total = (int)se($result, "total", 0, false);
+    }
+    global $total_pages; //will be available after function is called
+    $total_pages = ceil($total / $per_page);
+    global $offset; //will be available after function is called
+    $offset = ($page - 1) * $per_page;
+}
+//updates or inserts page into query string while persisting anything already present
+function persistQueryString($page)
+{
+    $_GET["page"] = $page;
+    return http_build_query($_GET);
 }
