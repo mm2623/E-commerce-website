@@ -19,7 +19,7 @@ if (isset($_POST["item_id"]) && isset($_POST["quantity"])) {
     }
     
     if ($quantity <= 0) {
-        $isValid = false;
+        $isValid = false; 
     }
     $db = getDB();
     $stmt = $db->prepare("SELECT name,cost FROM Products where id = :id ");

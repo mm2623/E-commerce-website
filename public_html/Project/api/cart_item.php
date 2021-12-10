@@ -10,7 +10,7 @@ if (isset($_POST["item_id"]) && isset($_POST["quantity"]) && isset($_POST["cost"
     $user_id = get_user_id();
     $item_id = (int)se($_POST, "item_id", 0, false);
     $quantity = (int)se($_POST, "quantity", 0, false);
-    $cost = (int)se($_POST, "cost", 0, false);
+    $cost = (int)se($_POST, "cost", 0, false); 
     $isValid = true;
     $errors = [];
     if ($user_id <= 0) {
