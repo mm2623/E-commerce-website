@@ -93,7 +93,9 @@ try {
                             <?php endif; ?>
                             <?php if($column == "name") :?>
                                 <?php $temp_quantity = $value;?>
-                                <td><?php echo $value ?></td>
+                                <td>
+                                    <a href="product_detail.php?id=<?php se($temp_id, "id"); ?>"><?php echo $value ?></a>
+                                </td>
                             <?php endif; ?>
                             <?php if($column == "unit_cost") :?>
                                 <?php $temp_cost = $value?>

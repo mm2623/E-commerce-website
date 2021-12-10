@@ -20,7 +20,7 @@ $db = getDB();
         flash("<pre>" . var_export($e, true) . "</pre>");
     }
 if (isset($_POST["itemName"])) {
-    $db = getDB();
+    $db = getDB(); 
     $stmt = $db->prepare("SELECT id, name, description, stock, cost, image from Products WHERE name like :name LIMIT 50");
     try {
         $stmt->execute([":name" => "%" . $_POST["itemName"] . "%"]);
