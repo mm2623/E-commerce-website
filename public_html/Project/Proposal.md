@@ -150,6 +150,7 @@
 - Milestone 2
 - Milestone 3
 - Milestone 4
+
 - [ ] \(mm/dd/yyyy of completion)
 <table>
 <tr><td>milestone 4</td></tr><tr><td>
@@ -524,6 +525,7 @@
 </table>
 </td>
 </tr></td></tr></table>
+
 ### Intructions
 #### Don't delete this
 1. Pick one project type
