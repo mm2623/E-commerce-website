@@ -31,6 +31,7 @@ require(__DIR__ . "/../../partials/nav.php");
 ?>
 
 <div class="container-fluid">
+    <?php global $temp_id; ?>
     <h1>Product Detail</h1>
         <?php foreach ($result as $column => $value) : ?>
             <?php if ($column == "name"):  ?>
@@ -52,6 +53,13 @@ require(__DIR__ . "/../../partials/nav.php");
                 <h5 class="body">Stock: <?php se($value, "stock"); ?></h5>
             <?php endif; ?>
         <?php endforeach; ?>
+        <?php if (has_role("Admin")) : ?> 
+            <td>
+                <a href="admin/edit_item.php?id=<?php se($item_id, "id"); ?>">
+                <button class="btn btn-primary">Edit</button>
+            </a>
+            </td>
+        <?php endif; ?>
 </div>
 
 <?php
