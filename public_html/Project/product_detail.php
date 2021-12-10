@@ -25,7 +25,7 @@ require(__DIR__ . "/../../partials/nav.php");
                 return inputMap($c["Type"]);
            }
         }
-        return "text";
+        return "text"; 
     }
 
 ?>
