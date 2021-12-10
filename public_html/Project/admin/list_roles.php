@@ -10,7 +10,7 @@ if (!has_role("Admin")) {
 if (isset($_POST["role_id"])) {
     $role_id = se($_POST, "role_id", "", false);
     if (!empty($role_id)) {
-        $db = getDB();
+        $db = getDB(); 
         $stmt = $db->prepare("UPDATE Roles SET is_active = !is_active WHERE id = :rid");
         try {
             $stmt->execute([":rid" => $role_id]);
