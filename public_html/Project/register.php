@@ -4,6 +4,7 @@ reset_session();
 ?>
 <form onsubmit="return validate(this)" method="POST">
     <div>
+    <h1>Register</h1>
         <label for="email">Email</label>
         <input type="email" name="email" required />
     </div>
@@ -19,7 +20,7 @@ reset_session();
         <label for="confirm">Confirm</label>
         <input type="password" name="confirm" required minlength="8" />
     </div>
-    <input type="submit" value="Register" />
+    <input type="submit" id="sub" value="Register" />
 </form>
 <script>
     function validate(form) {
