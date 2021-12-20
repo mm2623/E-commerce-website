@@ -7,7 +7,7 @@
 body{
     color: black;
     background-color: mediumspringgreen;
-}/*
+}
 nav {
     background-color: rgb(0, 255, 55);  
     list-style-type: none;
@@ -19,18 +19,69 @@ nav li {
     font-size: 20px;
     padding: 20px;
 }*/
-nav {
+svg{
+    margin-left: 5px;
+}
+h1{
+    margin-left: 5px;
+    margin-top: 10px;
+}
+h5{
+    margin-left: 5px;
+}
+h4{
+    display: inline-block;
+    text-align: center;
+}
+#text{
+    margin-left: 10px;
+}
+#noflex {
+ flex-shrink: unset;
+}
+.dropdown-menu{
     justify-content: space-between;
     background-color: rgb(0, 255, 76);
-    padding: 10px 50px;
+    padding: 15px 15px;
 }
+.navbar-light{
+    justify-content: space-between;
+    background-color: rgb(0, 255, 76);
+    padding: 0px 50px;
+    
+}
+.th{text-align:right}
+.btn-primary{margin-bottom: 2;}
+.body1{padding: 0px 30px; margin-top: 30;}
+.body{padding: 0px 30px;}
+.img{padding: 0px 30px;}
 nav li{
     list-style: none;
     display: inline-block;
-    margin-bottom: 10px;
-    margin-right: 60px;
+    margin-bottom: 0px;
+    margin-right: 50px;
     padding: 6px 0px;
 }
+label { display: inline-block; width: 130px; text-align: right; }
+#sub{ display: inline-block; width: 130px; text-align: center; margin-left: 150; margin-top: 10; background-color: #05ffde; border:groove;}
+input{
+    color: indianred;
+    margin-left: 10;
+} 
+table{margin-left: 10;}
+label{
+    text-transform: capitalize;
+}
+.scroll-content{
+    height: 70vh;
+    overflow: auto;
+}
+/*nav li a,.navbar-expand-lg{
+    color: var(--bs-orange) !important;
+    text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
+
+}
+.btn-primary{margin-bottom: 2px;}
 nav ul li a{
     color: #1d1d24;
     position: absolute;
@@ -52,8 +103,9 @@ nav ul li a:after{
 nav ul li a:hover:after{
     width: 100%;
 }
+input {display: inline-block;}
 input{border-radius: 100;}
 input{width: 10%;}
 input{height: 5%;}
 input{justify-content: space-between;}
-input{color: indianred; }
+input{color: indianred; }*/
