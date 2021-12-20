@@ -152,7 +152,51 @@ function get_user_account_id()
     }
     return 0;
 }
+function update_data($table, $id,  $data, $ignore = ["id", "submit"])
+{
+    $columns = array_keys($data);
+    foreach ($columns as $index => $value) {
+        //Note: normally it's bad practice to remove array elements during iteration
 
+        //remove id, we'll use this for the WHERE not for the SET
+        //remove submit, it's likely not in your table
+        if (in_array($value, $ignore)) {
+            unset($columns[$index]);
+        }
+    }
+    $query = "UPDATE $table SET "; //be sure you trust $table
+    $cols = [];
+    foreach ($columns as $index => $col) {
+        array_push($cols, "$col = :$col");
+    }
+    $query .= join(",", $cols);
+    $query .= " WHERE id = :id";
+
+    $params = [":id" => $id];
+    foreach ($columns as $col) {
+        $params[":$col"] = se($data, $col, "", false);
+    }
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute($params);
+        return true;
+    } catch (PDOException $e) {
+        flash("<pre>" . var_export($e->errorInfo, true) . "</pre>");
+        return false;
+    }
+}
+function inputMap($fieldType)
+{
+    if (str_contains($fieldType, "varchar")) {
+        return "text";
+    } else if ($fieldType === "text") {
+        return "textarea";
+    } else if (in_array($fieldType, ["int", "decimal"])) { //TODO fill in as needed
+        return "number";
+    }
+    return "text"; //default
+}
 function get_columns($table)
 {
     $table = se($table, null, null, false);
@@ -218,6 +262,33 @@ function empty_cart($user_id)
     }
     return false;
 }
+function order($user_id,$total_price,$full_address,$payment_method)
+{
+    error_log("add_item() Item ID: user_id: $user_id");
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO Orders (user_id, total_price, address, payment_method ) VALUES (:uid, :tp, :a , :pm) ");
+    try {
+        $stmt->execute([":uid" =>$user_id,":tp" =>$total_price,":a" =>$full_address,":pm" =>$payment_method]);
+        return $db->lastInsertId();
+    }catch (PDOException $e) {
+        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function order_item($user_id,$order_id)
+{
+    //error_log("add_item() Item ID: order_id: $order_id");
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO OrderItems (order_id,product_id, quantity, unit_price) SELECT :order_id, product_id , desired_quantity , unit_cost FROM Cart WHERE user_id = :uid");
+    //$stmt = $db->prepare("INSERT INTO OrderItems (order_id, product_id, quantity, unit_price) VALUES (:oid, :pid, :q, :up) ");
+    try {
+        $stmt->execute([":uid"=>$user_id, ":order_id"=>$order_id]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
 function add_to_cart($item_id, $user_id, $quantity, $cost)
 {
     //I'm using negative values for predefined items so I can't validate >= 0 for item_id
@@ -227,7 +298,6 @@ function add_to_cart($item_id, $user_id, $quantity, $cost)
     }
     $db = getDB();
     $stmt = $db->prepare("INSERT INTO Cart (product_id, user_id, desired_quantity, unit_cost) VALUES (:iid, :uid, :q, :uc) ON DUPLICATE KEY UPDATE desired_quantity = desired_quantity + :q, unit_cost=:uc"); 
-    //$stmt = $db->prepare("INSERT INTO Cart (product_id, user_id, desired_quantity) VALUES (:iid, :uid, :q) ON DUPLICATE KEY UPDATE quantity = quantity + :q");
     try {
         $stmt->execute([":iid" => $item_id, ":uid" => $user_id, ":q" => $quantity, ":uc" => $cost]);
         return true;
@@ -236,7 +306,20 @@ function add_to_cart($item_id, $user_id, $quantity, $cost)
     }
     return false;
 }
-
+function redirect($path,$variable)
+{ //header headache
+    //https://www.php.net/manual/en/function.headers-sent.php#90160
+    /*headers are sent at the end of script execution otherwise they are sent when the buffer reaches it's limit and emptied */
+    if (!headers_sent()) {
+        //php redirect
+        die(header("Location: " . get_url($path)."?id=" . $variable));
+    }
+    //javascript redirect
+    echo "<script>window.location.href='" . get_url($path) . "?id=". $variable.  "';</script>";
+    //metadata redirect (runs if javascript is disabled)
+    echo "<noscript><meta http-equiv=\"refresh\" content=\"0;url=" . get_url($path) . "?id=". $variable ."\"/></noscript>";
+    die();
+}
 /**
  * @param $query must have a column called "total"
  * @param array $params

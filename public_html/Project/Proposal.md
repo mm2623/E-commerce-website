@@ -564,6 +564,233 @@
 </td>
 </tr></td></tr></table>
 - Milestone 3
+
+- [ ] \(12/10/2021)
+  
+<table>
+<tr><td>milestone 3</td></tr><tr><td>
+<table>
+<tr><td>F1 - User will be able to purchase items in their Cart (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/checkout.php](https://mm2623-prod.herokuapp.com/Project/checkout.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/67](https://github.com/mm2623/IT202-007/pull/67)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F1 - Create an Orders table (id, user_id, created, total_price, address, payment_method)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146705794-debee09a-8750-4e26-a5a9-1619ce9c5b0b.png">
+<p>Screenshot #1 Showing the order Table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F1 - Create an OrderItems table (id, order_id, product_id, quantity, unit_price)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146708510-422c9378-a8c2-4fc9-b5aa-2c3a120b6aa9.png">
+<p>Screenshot #1 Showing the order Item table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F1 - Checkout Form</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146708648-1d487aba-d739-4bf2-aad4-bba915ad26a9.png">
+<p>Screenshot #1 Showing the checkout page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F1 - User will be asked for their Address for shipping purposes</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146708874-fd57deb7-a50d-4689-bde6-250716e49072.png">
+<p>Screenshot #1 Shows a flash message when address is not entered.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F1 - Order process</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146705794-debee09a-8750-4e26-a5a9-1619ce9c5b0b.png">
+<p>Screenshot #1 Showing the order is created in order table</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146708510-422c9378-a8c2-4fc9-b5aa-2c3a120b6aa9.png">
+<p>Screenshot #2 Showing the order item is added in order items table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F2 - Order Confirmation Page (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/confirmation.php](https://mm2623-prod.herokuapp.com/Project/confirmation.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/68](https://github.com/mm2623/IT202-007/pull/68)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F2 - Show the entire order details from the Order and OrderItems table (similar to cart)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146804319-506abb73-2c0b-4a28-8672-bd71e7a57424.png">
+<p>Screenshot #1 Showing the order details from the Order and OrderItems table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - Displays a Thank you message</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146804319-506abb73-2c0b-4a28-8672-bd71e7a57424.png">
+<p>Screenshot #1 Showing a Thank you message</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F3 - User will be able to see their Purchase History (2021-12-10)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_history.php](https://mm2623-prod.herokuapp.com/Project/purchase_history.php)</p><p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_deatil_page.php](https://mm2623-prod.herokuapp.com/Project/purchase_deatil_page.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/69](https://github.com/mm2623/IT202-007/pull/69)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F3 - For now limit to 10 most recent orders</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146807216-04866c69-b455-429c-b094-fa24050809a5.png">
+<p>Screenshot #1 Showing the list of order placed by the user with total amount paid and when the ordered is placed.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F3 - A list item can be clicked to view the full details in the Order Details Page (similar to Order Confirmation Page except no “Thank you” message)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146817358-8fbf28a3-8438-4ffe-acb2-93b84aa95146.png">
+<p>Screenshot #1 Showing order detail page when list item clicked</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F4 - Store Owner will be able to see all Purchase History (2021-12-10)</td></tr>
+<tr><td>Status: pending</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_history.php](https://mm2623-prod.herokuapp.com/Project/purchase_history.php)</p><p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_deatil_page.php](https://mm2623-prod.herokuapp.com/Project/purchase_deatil_page.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/69](https://github.com/mm2623/IT202-007/pull/69)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F4 - For now limit to 10 most recent orders</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146816717-22617ae2-b3dd-4eb2-9041-f5258494ea96.png">
+<p>Screenshot #1 Showing the list of order placed by all the users with their total amount paid and when the ordered is placed.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - A list item can be clicked to view the full details in the Order Details Page (similar to Order Confirmation Page except no “Thank you” message)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/808080/ffffff?text=pending"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/146817358-8fbf28a3-8438-4ffe-acb2-93b84aa95146.png">
+<p>Screenshot #1 Showing order detail page when list item clicked</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></td></tr></table>
+
 - Milestone 4
 
 ### Intructions

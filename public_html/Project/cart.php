@@ -42,7 +42,11 @@ try {
                         flash(data.message, "success");
                         if (data.message.indexOf("remove")>-1){
                             event.target.parentElement.parentElement.remove();
+                            
                         }
+                        else{
+                            window.location.reload();
+                        }      
                     }
                     console.log(http);
                 }
@@ -78,7 +82,7 @@ try {
                                 <th width="15%">Price</th>
                                 <th class="text-right" width="15%">Total</th>
                             </tr>
-                        </thead>
+                    </thead>
                     <thead>
                         <?php foreach ($record as $column => $value) : ?>
                             <!--<th><?php se($column); ?></th>--><!-- column names "header"-->
@@ -106,7 +110,6 @@ try {
                                 <?php $temp_quantity = $value;?>
                                 <td><input class="form-control" type="number" id="lname" value="<?php echo $value ;?>" onchange ="update_quantity(event,'<?php se($temp_id); ?>')"/></td>
                             <?php endif; ?>
-                            
                         <!--<?php se($value, null, "N/A"); ?></td>--> <!--display values in a row "----"-->  
                     <?php endforeach; ?>
                 <?php $total = $temp_quantity * $temp_cost;?> <!--calculating total for each item  -->
@@ -118,27 +121,40 @@ try {
                 </form>
                 </tr>
             <?php endforeach; ?>
-            <div >      
-                <thead >
-                    <?php if($temp_quantity > 0) :?>
-                        <tr >
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <th > <?php echo "Cart Total :"?></th>
-                            </td>
-                                <th> <?php echo "$",$cart_total ?></th>
-                                <form method="POST">
-                                <td><button type = "submit" name ="empty" class = "btn btn-sm btn-danger" onclick="">Empty the cart</button></td>
-                                </form>
-                        </tr> 
-                    <?php endif; ?>
-                </thead>
-                <?php if($temp_quantity == 0) :?>
-                    <h3 class="text" style="text-align:center"  >Your cart is empty</h3>
-                <?php endif; ?>
-            </div>
+            <thead>
+                <tr></tr>
+            </thead>
+            <?php if($temp_quantity == 0) :?>
+                <h3 class="text" style="text-align:center"  >Your cart is empty</h3>
+            <?php endif; ?>
         </table> 
+        <div class = "row" style=" text-align: center;">
+            <div class = "col" style=" text-align: center;">                   
+            <thead >
+                <tr>
+                    <th>
+                    <?php if($temp_quantity > 0) :?>
+                        <h3 style = "text-align:center;"><u>Summary</u></h3>
+                            <h5 style="display: inline-block;">  
+                                <?php echo "Cart Total :"?>
+                                <?php echo "$",$cart_total ?></h5> 
+                                <form action="checkout.php"method="PUT">
+                                <!--<input type="hidden" name="ordertotal" value="<?php echo$cart_total;?>" ></input>-->
+                                <button style= "margin-top: 10px;" type = "submit"  name ="checkout"  class = "btn btn-primary btn-lg col-12">Checkout</button> 
+                                </form>
+                                <form method="POST">
+                                <td><button type = "submit" name ="empty" class = "btn btn-danger btn-xs col-12" herf="confirmation.php" onclick="">Empty the cart</button></td>
+                                </form>  
+                    <?php endif; ?>
+                    </th>
+                </tr>    
+            </thead>   
+            <thead>
+                <tr></tr>
+            </thead>
+            </div>
+        </div>
+        
 </div>
 <?php
 require(__DIR__ . "/../../partials/footer.php");
