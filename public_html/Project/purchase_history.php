@@ -66,7 +66,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
                                 <?php $order_total= $value ?>
                             <?php endif; ?>
                             <?php if($column == "created") :?>
-                                <?php $order_created= $value ?>
+                                <?php $order_created= $value ?> 
                             <?php endif; ?>
                             <?php if($column == "user_id") :?>
                                 <?php $order_user_id= $value ?>

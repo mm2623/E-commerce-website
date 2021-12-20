@@ -10,7 +10,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
         }else if(empty ($_POST["payment"])){
             flash("Please select payment method", "alert");
         }else if(empty ($_POST["address"])){
-            flash("Please enter address", "alert");
+            flash("Please enter address", "alert"); 
         }else if(empty ($_POST["city"])){
             flash("Please enter city", "alert");
         }else if(empty ($_POST["state"])){

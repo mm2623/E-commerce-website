@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
 <?php
     $results = [];
     $results1 = [];
-    $order_id = se($_GET, "id", 0, false);
+    $order_id = se($_GET, "id", 0, false); 
     $db = getDB();
     $stmt = $db->prepare("SELECT id, user_id, total_price, address,created , payment_method FROM Orders WHERE id =:id ");
     try {
