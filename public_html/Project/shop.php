@@ -215,7 +215,7 @@ try {
                         <!-- Product detail-->
                         <form action="product_detail.php" method="PUT">
                             <input type="hidden" name="id" value="<?php se($item, 'id'); ?>" />
-                            <button onclick="detail('<?php se($item, 'id'); ?>','<?php se($item, 'cost'); ?>')" class="btn btn-primary">view the detail </button>
+                            <button onclick="" class="btn btn-primary">view the detail </button>
                         </form>
                     </div>
                 </div>

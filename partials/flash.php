@@ -39,5 +39,8 @@
     .alert-info {
         background-color: teal;
     }
+    .alert-alert {
+        background-color: #DAF89E;
+    }
 </style>
 </script>
