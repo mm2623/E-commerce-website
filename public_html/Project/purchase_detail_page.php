@@ -42,7 +42,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
             $results = $r;
         }
     } catch (PDOException $e) {
-        flash("<pre>" . var_export($e, true) . "</pre>");
+        flash("<pre>" . var_export($e, true) . "</pre>"); 
     }  
     print_r($results);*/
 ?>
