@@ -24,16 +24,21 @@ svg{
 }
 h1{
     margin-left: 5px;
+    margin-top: 10px;
 }
-#text{
+h5{
     margin-left: 5px;
 }
-/*nav li a,.navbar-expand-lg{
-    color: var(--bs-orange) !important;
-    text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
-
+h4{
+    display: inline-block;
+    text-align: center;
 }
-.btn-primary{margin-bottom: 2px;}*/
+#text{
+    margin-left: 10px;
+}
+#noflex {
+ flex-shrink: unset;
+}
 .dropdown-menu{
     justify-content: space-between;
     background-color: rgb(0, 255, 76);
@@ -54,9 +59,29 @@ nav li{
     list-style: none;
     display: inline-block;
     margin-bottom: 0px;
-    margin-right: 60px;
+    margin-right: 50px;
     padding: 6px 0px;
-}/*
+}
+label { display: inline-block; width: 130px; text-align: right; }
+#sub{ display: inline-block; width: 130px; text-align: center; margin-left: 150; margin-top: 10; background-color: #05ffde; border:groove;}
+input{
+    color: indianred;
+    margin-left: 10;
+} 
+table{margin-left: 10;}
+label{
+    text-transform: capitalize;
+}
+.scroll-content{
+    height: 70vh;
+    overflow: auto;
+}
+/*nav li a,.navbar-expand-lg{
+    color: var(--bs-orange) !important;
+    text-shadow: -.5px -.5px 0 #000, .5px -.5px 0 #000, -.5px .5px 0 #000, .5px .5px 0 #000;
+
+}
+.btn-primary{margin-bottom: 2px;}
 nav ul li a{
     color: #1d1d24;
     position: absolute;
@@ -77,22 +102,8 @@ nav ul li a:after{
 }
 nav ul li a:hover:after{
     width: 100%;
-}*/
-label { display: inline-block; width: 130px; text-align: right; }
-#sub{ display: inline-block; width: 130px; text-align: center; margin-left: 150; margin-top: 10; background-color: #05ffde; border:groove;}
-input{
-    color: indianred;
-    margin-left: 10;
-} 
-table{margin-left: 10;}
-label{
-    text-transform: capitalize;
 }
-.scroll-content{
-    height: 70vh;
-    overflow: auto;
-}
-/*input {display: inline-block;}
+input {display: inline-block;}
 input{border-radius: 100;}
 input{width: 10%;}
 input{height: 5%;}
