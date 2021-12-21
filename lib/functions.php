@@ -212,17 +212,6 @@ function get_columns($table)
     }
     return $results;
 }
-function inputMap($fieldType)
-{
-    if (str_contains($fieldType, "varchar")) {
-        return "text";
-    } else if ($fieldType === "text") {
-        return "textarea";
-    } else if (in_array($fieldType, ["int", "decimal"])) { //TODO fill in as needed
-        return "number";
-    }
-    return "text"; //default
-}
 function update_cart($item_id, $user_id, $quantity)
 {
     error_log("add_item() Item ID: $item_id, User_id: $user_id, Quantity $quantity");
