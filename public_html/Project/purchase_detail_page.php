@@ -143,7 +143,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
                             <input type="hidden" name="uid" value="<?php echo$order_user_id;?>">
                             <input type="hidden" name="pid" value="<?php echo$OrderItems_product_id;?>">
                             <span style="margin-left: 20px;">Rating</span>
-                            <input class = "btn btn-primary" type="radio" name="rating" value="1">1</input>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="1">1</input> 
                             <input class = "btn btn-primary" type="radio" name="rating" value="2">2</input>
                             <input class = "btn btn-primary" type="radio" name="rating" value="3">3</input>
                             <input class = "btn btn-primary" type="radio" name="rating" value="4">4</input>
