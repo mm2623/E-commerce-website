@@ -212,7 +212,6 @@ function get_columns($table)
     }
     return $results;
 }
-
 function update_cart($item_id, $user_id, $quantity)
 {
     error_log("add_item() Item ID: $item_id, User_id: $user_id, Quantity $quantity");

@@ -1,3 +1,4 @@
+
 ALTER TABLE Users ADD COLUMN Status TINYINT(1)
 not null default 0
 COMMENT 'Status field that defaults to be private';
@@ -9,3 +10,10 @@ not null default 0
 COMMENT 'Status field that defaults to be private';
 
 ALTER TABLE Products DROP COLUMN average_rating;
+
+ALTER TABLE Users ADD COLUMN Status varchar(10)
+not null default "private"
+COMMENT 'Status field that defaults to be private';
+
+ALTER TABLE Users DROP COLUMN Status;
+
