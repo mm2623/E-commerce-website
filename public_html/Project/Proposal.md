@@ -2,7 +2,8 @@
 ## Project Summary: (Copy from proposal): This project will create a simple e-commerce site for users. Administrators or store owners will be able to manage inventory and users will be able to manage their cart and place orders.
 ## Github Link: (Prod Branch of Project Folder)
 ## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
+## Website Link: (https://mm2623-prod.herokuapp.com/Project)
+## Demo Link: (https://mediaspace.njit.edu/media/Project+shop+demonstration/1_o9d4su4r)
 ## Your Name: Muhamad Abdul Mannan
 
 <!--
@@ -792,6 +793,489 @@
 </tr></td></tr></table>
 
 - Milestone 4
+- [ ] \(12/23/2021 of completion)
+
+<table>
+<tr><td>milestone 4</td></tr><tr><td>
+<table>
+<tr><td>F1 - User can set their profile to be public or private (will need another column in Users table) (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/profile.php](https://mm2623-prod.herokuapp.com/Project/profile.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/74](https://github.com/mm2623/IT202-007/pull/74)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F1 - If public, hide email address from other users</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289566-d4cf37cf-4f23-4fca-b01c-0e2ecc34b76c.png">
+<p>Screenshot #1 Showing the user can set their profile to public or private in their profile page.</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289436-a5b4bae6-7d46-4c2c-b37c-3fa0bd9ed7f4.png">
+<p>Screenshot #2 Showing that when view someone else profile and it set to public then you cannot see their email address.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F2 - User will be able to rate a product they purchased (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/product_detail.php](https://mm2623-prod.herokuapp.com/Project/product_detail.php)</p><p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_detail_page.php](https://mm2623-prod.herokuapp.com/Project/purchase_detail_page.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/75](https://github.com/mm2623/IT202-007/pull/75)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F2 - Create table called Ratings (id, product_id, user_id, rating, comment, created)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289805-ee14920a-0e65-49ab-ba8c-f0820d559020.png">
+<p>Screenshot #1 Showing the Rating table</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - 1-5 rating</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289675-89f68be6-1dcd-4aae-9b90-6047a6fd387f.png">
+<p>Screenshot #1 Showing that user can only rate from 1 to 5.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - Text Comment (use TEXT data type in sql)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289805-ee14920a-0e65-49ab-ba8c-f0820d559020.png">
+<p>Screenshot #1 Showing that table data type for comment is set to TEXT.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - Must be done on the Purchase Details Page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147289675-89f68be6-1dcd-4aae-9b90-6047a6fd387f.png">
+<p>Screenshot #1 Showing that user can only rate and comment from their order Purchase Details Page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - Ratings and Rating Comments will be visible on the Product Details page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290018-b2eb8367-a2f9-4072-92d9-d5d2f1ddfa18.png">
+<p>Screenshot #1 Showing the rating and its comment on Product Details page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F2 - Show the average rating on the Product Details Page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290018-b2eb8367-a2f9-4072-92d9-d5d2f1ddfa18.png">
+<p>Screenshot #1 Showing average rating on Product Details page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F3 - User’s Purchase History Changes (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_history.php](https://mm2623-prod.herokuapp.com/Project/purchase_history.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/76](https://github.com/mm2623/IT202-007/pull/76)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F3 - Filter by date range</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290351-fffb0677-4eb2-4dee-a520-65e50f0d97bc.png">
+<p>Screenshot #1 Showing sort by date range from 12/22/2021 to 12/24/2021</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F3 - Filter by category</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290718-4b1be21d-8e49-48ca-875f-fbf732983b6c.png">
+<p>Screenshot #1 Showing the sort by category</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F3 - Sort by total, date purchased, etc</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290503-79e9972d-f713-484a-ab9b-9c1e515811f4.png">
+<p>Screenshot #1 Showing the sort by total cost</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290621-fbf16710-274d-4132-b75d-3c80af4e4bb4.png">
+<p>Screenshot #2 Showing the sort by date purchased</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F3 - Add pagination</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147290621-fbf16710-274d-4132-b75d-3c80af4e4bb4.png">
+<p>Screenshot #1 Showing the pagination is added to the page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F4 - Store Owner Purchase History Changes (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/purchase_history.php](https://mm2623-prod.herokuapp.com/Project/purchase_history.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/76](https://github.com/mm2623/IT202-007/pull/76)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F4 - Filter by Date Range</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291006-257e6b3b-59e7-4c40-b1a3-94fdd3282bd6.png">
+<p>Screenshot #1 Showing the sort by Date Range</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - Filter by Category</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291207-19ad4eae-5376-46d4-9ca7-fea7bef4d67c.png">
+<p>Screenshot #1 Showing the sort by Category</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291286-ac042cf3-5fce-4431-b737-8c5a827fa5b9.png">
+<p>Screenshot #1 Showing the other half of page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - Sort by total, date purchased, etc</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291363-9c538ece-be79-4185-892c-41b97a032607.png">
+<p>Screenshot #1 Showing the sorting by total cost</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291443-8542d4c2-0c8e-4c65-852f-be361b012089.png">
+<p>Screenshot #2 Showing the other half of page</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291505-a3d65d1c-e8fc-49fb-b46c-6326bbdcf13c.png">
+<p>Screenshot #1 Showing the sorting by date purchased</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147291589-2a703155-65ad-45fb-815b-13331eed2cb1.png">
+<p>Screenshot #2 Showing the other half of page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - Add pagination</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147292138-ec69053b-6761-4a25-b737-b52a0cf91463.png">
+<p>Screenshot #1 Showing the header of the page for the second screenshot</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147292040-c822b69e-dc02-4eee-9b5f-662442f34b7d.png">
+<p>Screenshot #2 Showing the Purchase History page with pagination</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F4 - The result page should show the accurate total price of the combined search results (i.e., if just 3 records show each of $25, it should show $75 total for this view)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147292138-ec69053b-6761-4a25-b737-b52a0cf91463.png">
+<p>Screenshot #1 Showing the header of the page for the second screenshot</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147292040-c822b69e-dc02-4eee-9b5f-662442f34b7d.png">
+<p>Screenshot #2 Showing the combined total price of the page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F5 - Add pagination to Shop Page (and any other product lists not yet mentioned) (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/shop.php](https://mm2623-prod.herokuapp.com/Project/shop.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/77](https://github.com/mm2623/IT202-007/pull/77)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F5 - pagination to Shop Page</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147235601-354ab2d6-d681-403b-9113-ac3344dcaebc.png">
+<p>Screenshot #1 Showing the pagination to shop page</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F6 - Store Owner will be able to see all products out of stock (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/shop.php](https://mm2623-prod.herokuapp.com/Project/shop.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/77](https://github.com/mm2623/IT202-007/pull/77)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F6 - This will be added as a filter to their product list page from Milestone 2</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147234854-a190ba41-e5a9-4582-a6ef-3cd228dda94b.png">
+<p>Screenshot #1 Showing that Admin can sort out of stock product</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147235114-52306985-13aa-4e8e-a506-872c899cb739.png">
+<p>Screenshot #2 Showing that the product above has stock 0.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F6 - Pagination should account for this new filter</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147235601-354ab2d6-d681-403b-9113-ac3344dcaebc.png">
+<p>Screenshot #1 Showing the pagination without sort</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147235880-f78799d6-1949-4468-ad5d-bb88614ef502.png">
+<p>Screenshot #2 Showing the pagination when sorting out of stock products</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr><td>
+<table>
+<tr><td>F6 - Recommended to have the filter applied as a given value (i.e., where quantity is <= value)</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147237228-afa7ca05-6dff-4534-bb8f-74ae1408e3ac.png">
+<p>Screenshot #1 Showing the code where filter is applied but in a different way.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F7 - User can sort products by average rating on the Shop Page (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mm2623-prod.herokuapp.com/Project/shop.php](https://mm2623-prod.herokuapp.com/Project/shop.php)</p></td></tr>
+<tr><td>PRs:<p>
+
+ [https://github.com/mm2623/IT202-007/pull/77](https://github.com/mm2623/IT202-007/pull/77)</p></td></tr>
+<tr><td>
+<table>
+<tr><td>F7 - Hint: may want to add an “average rating” field to the Products table and update this value any time a new rating is given for the product</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147234272-d1550b0d-fcef-4fbe-a3c0-e521c65d42f2.png">
+<p>Screenshot #1 Showing the sorted products by average rating from low to high.</p>
+</td></tr>
+
+<tr><td>
+<img width="768px" src="https://user-images.githubusercontent.com/90267420/147234565-61244486-e527-456d-ba26-325de31f64d5.png">
+<p>Screenshot #2 Showing the sorted products by average rating from high to low.</p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<table>
+<tr><td>F8 - Demo (2021-12-21)</td></tr>
+<tr><td>Status: complete</td></tr>
+<tr><td>Links:<p>
+
+ [https://mediaspace.njit.edu/media/Project+shop+demonstration/1_o9d4su4r](https://mediaspace.njit.edu/media/Project+shop+demonstration/1_o9d4su4r)</p></td></tr>
+<tr><td>PRs:</td></tr>
+<tr><td>
+<table>
+<tr><td>F8 - just submitting the link above as well</td></tr>
+<tr><td>Status: 
+<img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=completed"></td></tr>
+
+<tr><td>
+<img width="768px" src="">
+<p></p>
+</td></tr>
+
+</td>
+</tr>
+</table>
+</td>
+</tr></td></tr></table>
 
 ### Intructions
 #### Don't delete this
