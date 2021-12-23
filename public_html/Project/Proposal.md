@@ -4,7 +4,7 @@
 ## Project Board Link: 
 ## Website Link: (https://mm2623-prod.herokuapp.com/Project)
 ## Demo Link: (https://mediaspace.njit.edu/media/Project+shop+demonstration/1_o9d4su4r)
-## Your Name: Muhamad Abdul Mannan
+## Your Name: Muhammad Abdul Mannan
 
 <!--
 ### Line item / Feature template (use this for each bullet point)
