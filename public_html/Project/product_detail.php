@@ -132,7 +132,7 @@ require(__DIR__ . "/../../partials/nav.php");
                 <h7 id ="noflex" style="width : 28%;margin-right : 70px;" ><?php echo "Review given on : ",$order_created; ?></h7>
             <?php endforeach; ?>
             <?php $average_rating= $total_rating/$counter; ?>
-            <?php $round_average_rating = round($average_rating, 1); ?>
+            <?php $round_average_rating = round($average_rating, 1); ?> 
             </div>
         <div class = "row">
             <h1 style="margin-top : 20px; text-align:center;"><?php echo "Average rating: ",$round_average_rating; ?></h1>

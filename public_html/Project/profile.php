@@ -127,7 +127,7 @@ try {
         <?php if ($edit) : ?>
             <a class="btn btn-primary" href="?">View</a>
         <?php else : ?>
-            <a class="btn btn-primary" href="?edit=true">Edit</a>
+            <a class="btn btn-primary" href="?edit=true">Edit</a> 
         <?php endif; ?>
     <?php endif; ?>
     <?php if (!$edit) : ?>
