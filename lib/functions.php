@@ -251,6 +251,29 @@ function empty_cart($user_id)
     }
     return false;
 }
+function update_average_rating($a_r,$p_id)
+{
+    $db = getDB();
+    $stmt = $db->prepare("UPDATE Products set average_rating = :aver_rat where id = :pro_id ");
+    try {
+        $stmt->execute([":aver_rat"=>$a_r, ":pro_id"=>$p_id]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function updating_stock($product_id,$product_stock,$OrderItems_quantity){
+    $db = getDB();
+    $stmt = $db->prepare("UPDATE Products set stock = :p_s - :Oi_q where id = :p_id ");
+    try {
+        $stmt->execute([":p_id"=>$product_id, ":p_s"=>$product_stock, ":Oi_q"=>$OrderItems_quantity]);
+        return true;
+    }catch (PDOException $e) {
+        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
 function order($user_id,$total_price,$full_address,$payment_method)
 {
     error_log("add_item() Item ID: user_id: $user_id");
@@ -294,6 +317,32 @@ function add_to_cart($item_id, $user_id, $quantity, $cost)
         error_log("Error recording purchase $quantity of $item_id for user $user_id: " . var_export($e->errorInfo, true));
     }
     return false;
+}
+function ratting($store_product_id,$store_user_id,$store_rating,$store_comment)
+{
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO Ratings (product_id, user_id, rating, comment) VALUES (:pid, :uid, :r, :c)"); 
+    try {
+        $stmt->execute([":pid" => $store_product_id, ":uid" => $store_user_id, ":r" => $store_rating, ":c" => $store_comment]);
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error recording rating of $store_product_id: " . var_export($e->errorInfo, true));
+    }
+    return false;
+}
+function redirect1($path)
+{ //header headache
+    //https://www.php.net/manual/en/function.headers-sent.php#90160
+    /*headers are sent at the end of script execution otherwise they are sent when the buffer reaches it's limit and emptied */
+    if (!headers_sent()) {
+        //php redirect
+        die(header("Location: " . get_url($path)));
+    }
+    //javascript redirect
+    echo "<script>window.location.href='" . get_url($path) . "';</script>";
+    //metadata redirect (runs if javascript is disabled)
+    echo "<noscript><meta http-equiv=\"refresh\" content=\"0;url=" . get_url($path) . "\"/></noscript>";
+    die();
 }
 function redirect($path,$variable)
 { //header headache
