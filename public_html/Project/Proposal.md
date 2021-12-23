@@ -2,7 +2,8 @@
 ## Project Summary: (Copy from proposal): This project will create a simple e-commerce site for users. Administrators or store owners will be able to manage inventory and users will be able to manage their cart and place orders.
 ## Github Link: (Prod Branch of Project Folder)
 ## Project Board Link: 
-## Website Link: (Heroku Prod of Project folder)
+## Website Link: (https://mm2623-prod.herokuapp.com/Project)
+## Demo Link: (https://mediaspace.njit.edu/media/Project+shop+demonstration/1_o9d4su4r)
 ## Your Name: Muhamad Abdul Mannan
 
 <!--
