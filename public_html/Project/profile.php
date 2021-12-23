@@ -1,11 +1,23 @@
 <?php
 require_once(__DIR__ . "/../../partials/nav.php");
-is_logged_in(true);
+$user_id = se($_GET, "id", get_user_id(), false);
+error_log("user id $user_id");
+$isMe = $user_id === get_user_id();
+//!! makes the value into a true or false value regardless of the data https://stackoverflow.com/a/2127324
+$edit = !!se($_GET, "edit", false, false); //if key is present allow edit, otherwise no edit
+if ($user_id < 1) {
+    flash("Invalid user", "danger");
+    redirect1("home.php");
+    //die(header("Location: home.php"));
+}
 ?>
 <?php
-if (isset($_POST["save"])) {
+//only allow profile updating if we're the user visiting this page and it's in edit mode
+if (isset($_POST["save"]) && $isMe && $edit) {
+    $db = getDB();
     $email = se($_POST, "email", null, false);
     $username = se($_POST, "username", null, false);
+    $Status = !!se($_POST, "Status", false, false) ? 1 : 0;
     $hasError = false;
     //sanitize
     $email = sanitize_email($email);
@@ -19,9 +31,9 @@ if (isset($_POST["save"])) {
         $hasError = true;
     }
     if (!$hasError) {
-        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id()];
-        $db = getDB();
-        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username where id = :id");
+        $params = [":email" => $email, ":username" => $username, ":id" => get_user_id(), ":vis" => $Status];
+
+        $stmt = $db->prepare("UPDATE Users set email = :email, username = :username, Status = :vis where id = :id");
         try {
             $stmt->execute($params);
         } catch (Exception $e) {
@@ -51,6 +63,10 @@ if (isset($_POST["save"])) {
     $new_password = se($_POST, "newPassword", null, false);
     $confirm_password = se($_POST, "confirmPassword", null, false);
     if (!empty($current_password) && !empty($new_password) && !empty($confirm_password)) {
+        if (strlen($new_password) < 8) {
+            flash("New password must be at least 8 characters long", "danger");
+            return;
+        }
         if ($new_password === $confirm_password) {
             //TODO validate current
             $stmt = $db->prepare("SELECT password from Users where id = :id");
@@ -79,39 +95,87 @@ if (isset($_POST["save"])) {
         }
     }
 }
-?>
 
-<?php
 $email = get_user_email();
 $username = get_username();
+$created = "";
+$public = false;
+//$user_id = get_user_id(); //this is retrieved above now
+//TODO pull any other public info you want
+$db = getDB();
+$stmt = $db->prepare("SELECT username,email,created, Status from Users where id = :id");
+try {
+    $stmt->execute([":id" => $user_id]);
+    $r = $stmt->fetch(PDO::FETCH_ASSOC);
+    error_log("user: " . var_export($r, true));
+    $username = se($r, "username", "", false);
+    $email = se($r, "email", "", false);
+    $created = se($r, "created", "", false);
+    $public = se($r, "Status", 0, false) > 0;
+    if (!$public && !$isMe) {
+        flash("User's profile is private", "warning");
+        redirect1("home.php");
+        //die(header("Location: home.php"));
+    }
+} catch (Exception $e) {
+    echo "<pre>" . var_export($e->errorInfo, true) . "</pre>";
+}
 ?>
-<form method="POST" onsubmit="return validate(this);">
-<h1>Profile</h1>
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="<?php se($email); ?>" />
-    </div>
-    <div class="mb-3">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value="<?php se($username); ?>" />
-    </div>
-    <!-- DO NOT PRELOAD PASSWORD -->
-    <h5>Password Reset</h5>
-    <div class="mb-3">
-        <label for="cp">Current Password</label>
-        <input type="password" name="currentPassword" id="cp" />
-    </div>
-    <div class="mb-3">
-        <label for="np">New Password</label>
-        <input type="password" name="newPassword" id="np" />
-    </div>
-    <div class="mb-3">
-        <label for="conp">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="conp" />
-    </div>
-    <input type="submit" value="Update Profile" name="save" />
-</form>
+<div class="container-fluid">
+    <h1>Profile</h1>
+    <?php if ($isMe) : ?>
+        <?php if ($edit) : ?>
+            <a class="btn btn-primary" href="?">View</a>
+        <?php else : ?>
+            <a class="btn btn-primary" href="?edit=true">Edit</a>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if (!$edit) : ?>
+        <div>Username: <?php se($username); ?></div>
+        <?php if ($public) : ?>
+            <div>Email Address: <?php se($email); ?></div>
+        <div>Joined: <?php se($created); ?></div>
+        <?php endif; ?>
+    <?php endif; ?>
+    
 
+    <?php if ($isMe && $edit) : ?>
+        <form method="POST" onsubmit="return validate(this);">
+        <div class="row">
+                <div class="form-check form-switch">
+                    <input name="Status" class="form-check-input" Style = "margin-left:100px;margin-top:10px;" type="checkbox" id="flexSwitchCheckDefault" <?php if ($public) echo "checked"; ?>>
+                    <label class="form-check-label" Style = "width: 150px;margin-top:10px;" for="flexSwitchCheckDefault">Make Profile Public</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="form-label" Style = "width: 200px; margin-right:100px;margin-top:10px;" for="email">Email</label>
+                <input class="form-control" Style = "width: 500px;margin-top:10px;" type="email" name="email" id="email" value="<?php se($email); ?>" />
+            </div>
+            <div class="row">
+                <label class="form-label" Style = "width: 200px; margin-right:100px;margin-top:10px;" for="username">Username</label>
+                <input class="form-control" Style = "width: 500px;margin-top:10px;" type="text" name="username" id="username" value="<?php se($username); ?>" />
+            </div>
+            <!-- DO NOT PRELOAD PASSWORD -->
+            <div class="row">
+                <h4 Style = "text-align:left;">Password Reset</h4>
+            </div>
+            <div class="row">
+                <label class="form-label" Style = "width: 200px; margin-right:100px;margin-top:10px;" for="cp">Current Password</label>
+                <input class="form-control" Style = "width: 500px;" type="password" name="currentPassword" id="cp" />
+            </div>
+            <div class="row">
+                <label class="form-label" Style = "width: 200px; margin-right:100px;margin-top:10px;" for="np">New Password</label>
+                <input class="form-control" Style = "width: 500px;margin-top:10px;" type="password" name="newPassword" id="np" />
+            </div>
+            <div class="row">
+                <label class="form-label" Style = "width: 200px; margin-right:100px;margin-top:10px;" for="conp">Confirm Password</label>
+                <input class="form-control" Style = "width: 500px;margin-top:10px;" type="password" name="confirmPassword" id="conp" />
+            </div>
+            
+            <input type="submit" class="mt-3 btn btn-primary" value="Update Profile" name="save" />
+        </form>
+    <?php endif; ?>
+</div>
 <script>
     function validate(form) {
         let pw = form.newPassword.value;
@@ -142,5 +206,5 @@ $username = get_username();
     }
 </script>
 <?php
-require_once(__DIR__ . "/../../partials/flash.php");
+require_once(__DIR__ . "/../../partials/footer.php");
 ?>

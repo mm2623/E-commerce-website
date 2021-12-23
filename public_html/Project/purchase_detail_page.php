@@ -3,6 +3,16 @@ require(__DIR__ . "/../../partials/nav.php");
 require_once(__DIR__ . "/../../lib/functions.php");
 ?>
 <?php
+    
+    if(isset($_POST["submit"])){
+        $store_rating = $_POST["rating"];
+        if(isset($_POST["comment"])){
+            $store_comment = $_POST["comment"];
+            $store_user_id = $_POST["uid"];
+            $store_product_id = $_POST["pid"];
+        }
+        ratting($store_product_id,$store_user_id,$store_rating,$store_comment);
+    }
     $results = [];
     $results1 = [];
     $order_id = se($_GET, "id", 0, false);
@@ -46,6 +56,15 @@ require_once(__DIR__ . "/../../lib/functions.php");
     }  
     print_r($results);*/
 ?>
+
+<script>
+    $(':radio').change(
+  function(){
+    $('.choice').text( this.value + ' stars' );
+  } 
+)
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container-fluid">
     <h1 id ="noflex" >Order Detail</h1>
     <div class="row">  
@@ -53,12 +72,16 @@ require_once(__DIR__ . "/../../lib/functions.php");
             <?php foreach ($results as $index => $record) : ?>
                 <?php global $order_number; ?>
                 <?php global $order_created; ?>
+                <?php global $order_user_id; ?>
                 <?php global $order_total_price; ?>
                 <?php global $order_address; ?>
                 <?php global $order_payment_method; ?>
                 <?php foreach ($record as $column => $value) : ?>
                        <?php if($column == "id") :?>
                             <?php $order_number= $value ?>
+                        <?php endif; ?>
+                        <?php if($column == "user_id") :?>
+                            <?php $order_user_id= $value ?>
                         <?php endif; ?>
                         <?php if($column == "created") :?>
                             <?php $order_created= $value ?>
@@ -87,12 +110,16 @@ require_once(__DIR__ . "/../../lib/functions.php");
                 <?php global $OrderItems_description; ?>
                 <?php global $OrderItems_quantity; ?>
                 <?php global $OrderItems_unit_price; ?>
+                <?php global $OrderItems_product_id; ?>
                 <?php foreach ($record1 as $column => $value) : ?>
                        <?php if($column == "name") :?>
                             <?php $OrderItems_name= $value ?>
                         <?php endif; ?>
                         <?php if($column == "description") :?>
                             <?php $OrderItems_description= $value ?>
+                        <?php endif; ?>
+                        <?php if($column == "product_id") :?>
+                            <?php $OrderItems_product_id = $value ?>
                         <?php endif; ?>
                         <?php if($column == "quantity") :?>
                             <?php $OrderItems_quantity= $value ?>
@@ -110,6 +137,27 @@ require_once(__DIR__ . "/../../lib/functions.php");
                 <h6 id ="noflex" style="width : 300px;margin-left: 5px; margin-top: 20px;" ><?php echo "Description : ",$OrderItems_description; ?></h6>
                 <h6 id ="noflex" style="width : 300px;margin-left: 5px; margin-top: 20px;" ><?php echo "Quantity : ",$OrderItems_quantity; ?></h6>
                 <h6 id ="noflex" style="width : 300px;margin-left: 5px; margin-top: 20px;" ><?php echo "Unit Price : $ ",$OrderItems_unit_price; ?></h6>
+                <form method="POST">
+                    <div class = "row">
+                        <div class = "col">
+                            <input type="hidden" name="uid" value="<?php echo$order_user_id;?>">
+                            <input type="hidden" name="pid" value="<?php echo$OrderItems_product_id;?>">
+                            <span style="margin-left: 20px;">Rating</span>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="1">1</input>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="2">2</input>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="3">3</input>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="4">4</input>
+                            <input class = "btn btn-primary" type="radio" name="rating" value="5" >5</input>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col">
+                            <span style="margin-left: 20px;">Comment</span>
+                            <input class="form-control" type="text" name="comment" style="margin-left: 20px;width:500px;display:inline-block;" placeholder= "Enter the Comment" style ="width:500px">
+                            <button  type = "submit" name ="submit" class = "btn btn-primary btn-lg" style="margin-left: 20px;width:100px"onclick="">Submit</button>
+                        </div>      
+                    </div>
+                </form>
             <?php endforeach; ?>
     </div>
 </div>
