@@ -62,7 +62,7 @@ require_once(__DIR__ . "/../../lib/functions.php");
     //print_r($results);
 ?>
 <div class="container-fluid" style="margin-bottom:20px;">
-    <h1 id ="noflex" >Order History</h1>
+    <h1 id ="noflex" >Order History</h1> 
     <div class="row">
         <form >
         <div class = "row">
