@@ -793,7 +793,6 @@
 </tr></td></tr></table>
 
 - Milestone 4
-
 - [ ] \(12/23/2021 of completion)
 
 <table>
