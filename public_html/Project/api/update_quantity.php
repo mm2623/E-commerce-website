@@ -22,7 +22,7 @@ if (isset($_POST["item_id"]) && isset($_POST["quantity"])) {
         $isValid = false; 
     }
     $db = getDB();
-    $stmt = $db->prepare("SELECT name,cost FROM Products where id = :id ");
+    $stmt = $db->prepare("SELECT name,stock,cost FROM Products where id = :id ");
     $name = "";
     try {
         $stmt->execute([":id" => $item_id]);
@@ -30,16 +30,26 @@ if (isset($_POST["item_id"]) && isset($_POST["quantity"])) {
         if ($r) {
             $cost = (int)se($r, "cost", 0, false);
             $name = se($r, "name", "", false);
+            $stock = se($r, "stock", "", false);
         }
     } catch (PDOException $e) {
         error_log("Error getting cost of $item_id: " . var_export($e->errorInfo, true));
         $isValid = false;
     }
     if ($isValid) {
-            update_cart($item_id, $user_id, $quantity);
-            http_response_code(200);
-            $response["message"] = "$name quantity have been changed to $quantity";
-            //success
+            if ($quantity <= $stock){
+                update_cart($item_id, $user_id, $quantity,);
+                http_response_code(200);
+                $response["message"] = "$name quantity have been changed to $quantity";
+            }//success
+            else if($stock == 0) {
+                http_response_code(200);
+                $response["message"] = "$name stock is 0";
+            }
+            else {
+                http_response_code(200);
+                $response["message"] = "$name quantity is out of stock";
+            }
         }
     else if ($quantity == 0 ){
         delete_item($item_id, $user_id);

@@ -6,7 +6,7 @@ $db = getDB();
 //Sort and Filters
 $col = se($_GET, "col", "cost", false);
 //allowed list
-if (!in_array($col, ["cost","category", "stock", "name", "created"])) {
+if (!in_array($col, ["cost","category", "stock", "name", "out_stock","average_rating", "created"])) {
     $col = "cost"; //default value, prevent sql injection
 }
 $order = se($_GET, "order", "asc", false);
@@ -17,7 +17,7 @@ if (!in_array($order, ["asc", "desc"])) {
 $name = se($_GET, "name", "", false);
 
 //split query into data and total
-$base_query = "SELECT id, name, description, cost, stock, visibility , image FROM Products items";
+$base_query = "SELECT id, name, description, cost, stock, visibility ,average_rating, image FROM Products items";
 $total_query = "SELECT count(1) as total FROM Products items";
 //dynamic query
 $query = " WHERE 1=1"; //1=1 shortcut to conditionally build AND clauses
@@ -28,8 +28,11 @@ if (!empty($name)) {
     $params[":name"] = "%$name%";
 }
 //apply column and order sort
-if (!empty($col) && !empty($order)) {
+if (!empty($col) && !empty($order) && $col != "out_stock") {
     $query .= " ORDER BY $col $order"; //be sure you trust these values, I validate via the in_array checks above
+}
+if (!empty($col) && !empty($order) && $col=="out_stock") {
+    $query = " WHERE stock = 0"; //be sure you trust these values, I validate via the in_array checks above
 }
 //paginate function
 $per_page = 3;
@@ -144,7 +147,7 @@ try {
         //TODO create JS helper to update all show-balance elements
     }
 </script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container-fluid">
     <h1>Shop</h1>
     <form class="row row-cols-auto g-3 align-items-center">
@@ -164,6 +167,10 @@ try {
                     <option value="stock">Stock</option>
                     <option value="name">Name</option>
                     <option value="created">Created</option>
+                    <option value="average_rating">Average Rating</option>
+                    <?php if (has_role("Admin")) : ?>
+                        <option value="out_stock">Out of Stock</option>
+                    <?php endif; ?>
                 </select>
                 <script>
                     //quick fix to ensure proper value is selected since
@@ -189,7 +196,7 @@ try {
     </form>
     <div class="row row-cols-1 row-cols-md-5 g-4">
         <?php foreach ($results as $item) : ?>
-            <div class="col">
+            <div class="col" style="width: 330px;">
                 <div class="card bg-light">
                     <div class="card-header">
                         Item
@@ -200,22 +207,24 @@ try {
 
                     <div class="card-body">
                         <h5 class="card-title">Name: <?php se($item, "name"); ?></h5>
-                        <p class="card-text">Description: <?php se($item, "description"); ?></p>
+                        <p class="card-text" style="margin-bottom: 0px;">Description: <?php se($item, "description"); ?></p>
+                        <p class="fa fa-star checked" style="margin-bottom: 0px;">Average rating: <?php se($item, "average_rating"); ?></p>
+                        <p class="fa fa-star checked" style="margin-bottom: 0px;"></p>
                     </div>
                     <div class="card-footer">
-                        Cost: $<?php se($item, "cost"); ?>
+                        <span style="margin-right: 50px;">Cost: $<?php se($item, "cost"); ?></span>
                         <!-- Cart-->
                         <button onclick="purchase(event,'<?php se($item, 'id'); ?>','<?php se($item, 'cost'); ?>')" class="btn btn-primary">Add to Cart</button>
                         <?php if (has_role("Admin")) : ?> 
                             <td>
                                 <a href="admin/edit_item.php?id=<?php se($item, "id"); ?>">Edit</a>
                             </td>
-                        <?php endif; ?>
+                        <?php endif; ?> 
                         
                         <!-- Product detail-->
                         <form action="product_detail.php" method="PUT">
                             <input type="hidden" name="id" value="<?php se($item, 'id'); ?>" />
-                            <button onclick="detail('<?php se($item, 'id'); ?>','<?php se($item, 'cost'); ?>')" class="btn btn-primary">view the detail </button>
+                            <button onclick="" class="btn btn-primary">view the detail </button>
                         </form>
                     </div>
                 </div>
