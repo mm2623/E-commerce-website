@@ -219,7 +219,7 @@ try {
                             <td>
                                 <a href="admin/edit_item.php?id=<?php se($item, "id"); ?>">Edit</a>
                             </td>
-                        <?php endif; ?>
+                        <?php endif; ?> 
                         
                         <!-- Product detail-->
                         <form action="product_detail.php" method="PUT">
