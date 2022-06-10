@@ -35,7 +35,7 @@ if (!empty($col) && !empty($order) && $col=="out_stock") {
     $query = " WHERE stock = 0"; //be sure you trust these values, I validate via the in_array checks above
 }
 //paginate function
-$per_page = 3;
+$per_page = 4;
 paginate($total_query . $query, $params, $per_page);
 //get the total
 /* this comment block has been replaced by paginate()
