@@ -24,7 +24,7 @@ $ignore = ["id", "modified", "created"];
             <?php /* Lazily ignoring fields via hardcoded array*/ ?>
             <?php if (!in_array($column["Field"], $ignore)) : ?>
                 <div class="mb-4">
-                    <label class="form-label" for="<?php se($column, "Field"); ?>"></label>
+                    <label class="form-label" for="<?php se($column, "Field"); ?>"><?php se($column, "Field"); ?></label>
                     <input class="form-control" id="<?php se($column, "Field"); ?>" type="<?php echo inputMap(se($column, "Type", "", false)); ?>" name="<?php se($column, "Field"); ?>" />
                 </div>
             <?php endif; ?>
