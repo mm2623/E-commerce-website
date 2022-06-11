@@ -28,6 +28,7 @@ try {
     if ($r) {
         $result = $r;
     }
+    print_r($result);
 } catch (PDOException $e) {
     flash("<pre>" . var_export($e, true) . "</pre>");
 }
