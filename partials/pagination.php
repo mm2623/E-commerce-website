@@ -7,7 +7,7 @@ if (!isset($page)) {
     $page = 1;
 }
 ?>
-<nav class="pagination-box" aria-label="Generic Pagination">
+<div class="pagination-box">
     <ul class="pagination">
         <li class="page-item <?php echo ($page - 1) < 1 ? "disabled" : ""; ?>">
             <a class="page-link" href="?<?php se(persistQueryString($page - 1)); ?>" tabindex="-1">Previous</a>
@@ -19,4 +19,4 @@ if (!isset($page)) {
             <a class="page-link" href="?<?php se(persistQueryString($page + 1)); ?>">Next</a>
         </li>
     </ul>
-</nav>
+</div>
