@@ -232,8 +232,9 @@ try {
         <?php endforeach; ?>
     </div>
     <!-- this will be moved into a partial file for reusability-->
-    <?php include(__DIR__ . "/../../partials/pagination.php"); ?>
+    
 </div>
+<?php include(__DIR__ . "/../../partials/pagination.php"); ?>
 <?php
 require(__DIR__ . "/../../partials/footer.php");
 ?>
