@@ -88,9 +88,7 @@ label{
   }
 .pagination-box{
     padding: 15px;
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 20px;
     margin-bottom: 10px;
     background-color: rgb(20, 248, 168);
     border-radius: 5px;
