@@ -95,8 +95,10 @@ label{
     width:50%;
 }
 ul.pagination{
-    margin: 0;
     
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
 }
 li.page-item{
     margin-left: 5px;
