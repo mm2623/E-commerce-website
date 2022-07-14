@@ -89,6 +89,8 @@ label{
 .pagination-box{
     padding: 15px;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10px;
     background-color: rgb(20, 248, 168);
     border-radius: 5px;
@@ -96,9 +98,6 @@ label{
     text-align: center;
 }
 ul.pagination{
-    
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 0px;
 }
 li.page-item{
