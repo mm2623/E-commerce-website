@@ -9,4 +9,4 @@ getIPs().then(data=>{
     http.send(q);
 })
 </script>
-<?php redirect('home.php'); ?>
+<?php redirect1('home.php'); ?>
