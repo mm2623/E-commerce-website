@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . "/../../lib/functions.php"); ?>
+<?php require_once(__DIR__ . "/../../lib/db.php"); ?>
 <?php
     $info = $_SERVER['HTTP_USER_AGENT'];
     $data = file_get_contents("php://input");
@@ -6,8 +6,19 @@
     $ip = $data[0];
 
     function ip_details($ip) {
-        $json = file_get_contents("http://ipinfo.io/{$ip}/geo");
-        $details = json_decode($json, true);
+        $url = "http://ipinfo.io/{$ip}/geo";
+
+        // curl*
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $details = array();
+        $details = json_decode($result,true);
+
         return $details;
     }
     $details = ip_details($ip);
