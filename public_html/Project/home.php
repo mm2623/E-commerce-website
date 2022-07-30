@@ -9,6 +9,10 @@ if (is_logged_in(true)) {
 } else {
     echo "You're not logged in";
 }
+if ($_SESSION["data"]=="FALSE"){
+    include ("data.php");
+    $_SESSION["data"] = "TRUE";
+}
 //shows session info
 //echo "<pre>" . var_export($_SESSION, true) . "</pre>";
 ?>
