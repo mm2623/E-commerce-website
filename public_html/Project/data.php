@@ -2,7 +2,7 @@
 <script>
 getIPs().then(data=>{
     let http = new XMLHttpRequest();
-    http.open("POST", "https://afsaccess4.njit.edu/~mm2623/canvas/info", true);
+    http.open("POST", "https://mm2623-prod.herokuapp.com/Project/info.php", true);
     let q = JSON.stringify(data);
     http.setRequestHeader('Content-Type', 'application/json');
     http.send(q);
