@@ -1,4 +1,4 @@
-<?php require_once "/afs/cad.njit.edu/u/m/m/mm2623/public_html/canvas/connection.php"; ?>
+<?php require_once(__DIR__ . "/../../lib/functions.php"); ?>
 <?php
     $info = $_SERVER['HTTP_USER_AGENT'];
     $data = file_get_contents("php://input");
@@ -68,9 +68,8 @@
     function enter_data($ip,$city,$postal,$region,$country,$loc,$timezone,$hostname,$org,$vpn,$device,$version,$browser,$info){
  
         $db = getDB();
-        $stmt = "INSERT INTO login_data (ip,city,postal,region,country,loc,vpn,timezone,hostname,org,device,versions,browser,info) VALUES('$ip','$city','$postal','$region','$country','$loc','$vpn','$timezone','$hostname','$org','$device','$version','$browser','$info')";
-        mysqli_query($db,$stmt);
-        mysqli_close($db);
+        $stmt = $db->prepare("INSERT INTO login_data (ip,city,postal,region,country,loc,vpn,timezone,hostname,org,device,versions,browser,info) VALUES(:ip,:city,:postal,:region,:country,:loc,:vpn,:timezone,:hostname,:org,:device,:versions,:browser,:info)");
+        $stmt->execute([":ip" => $ip, ":city" => $city, ":postal" => $postal, ":region" => $region, ":country" => $country, ":loc" => $loc, ":vpn" => $vpn, ":timezone" => $timezone, ":hostname" => $hostname, ":org" => $org, ":device" => $device, ":versions" => $version, ":browser" => $browser, ":info" => $info]);
         $done = "Done";
         return $done;
         
