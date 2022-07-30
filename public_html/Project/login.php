@@ -69,6 +69,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
                     if (password_verify($password, $hash)) {
                         flash("Welcome $email");
                         $_SESSION["user"] = $user;
+                        $_SESSION["data"] = "FALSE";
                         //lookup potential roles
                         $stmt = $db->prepare("SELECT Roles.name FROM Roles 
                         JOIN UserRoles on Roles.id = UserRoles.role_id 
