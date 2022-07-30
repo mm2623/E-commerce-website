@@ -2,8 +2,8 @@
 <?php
     $info = $_SERVER['HTTP_USER_AGENT'];
     $data = file_get_contents("php://input");
-    $data = json_decode($data, true);
-    $ip = $data[0];
+    $data1 = json_decode($data, true);
+    $ip = $data1[0];
 
     function ip_details($ip) {
         $url = "http://ipinfo.io/{$ip}/geo";
