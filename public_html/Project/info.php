@@ -54,6 +54,7 @@
     elseif($realip != $ip){
         $vpn = "TRUE";
     }
+    echo "Real ip : ".$realip;
 
     $array = str_word_count($_SERVER['HTTP_USER_AGENT'], 1);
     $device = $array[1];
