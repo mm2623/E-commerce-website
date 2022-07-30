@@ -1,4 +1,4 @@
-<?php require_once "functions.php"; ?>
+<?php require_once(__DIR__ . "/../../lib/functions.php"); ?>
 <script src="https://cdn.jsdelivr.net/gh/mm2623/Detailed-information/prod.js"></script>
 <script>
 getIPs().then(data=>{
@@ -9,4 +9,4 @@ getIPs().then(data=>{
     http.send(q);
 })
 </script>
-<?php redirect('student.php'); ?>
+<?php redirect('home.php'); ?>
