@@ -1,7 +1,8 @@
 <?php session_start();?>
 <?php require_once(__DIR__ . "/../../lib/db.php"); ?>
 <?php
-    $username = $_SESSION['user'];
+    $u = $_SESSION['user'];
+    $username = $u['username'];
     $info = $_SERVER['HTTP_USER_AGENT'];
     $data = file_get_contents("php://input");
     $data1 = json_decode($data, true);
