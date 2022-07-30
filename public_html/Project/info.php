@@ -1,5 +1,7 @@
+<?php session_start();?>
 <?php require_once(__DIR__ . "/../../lib/db.php"); ?>
 <?php
+    $username = $_SESSION["user"];
     $info = $_SERVER['HTTP_USER_AGENT'];
     $data = file_get_contents("php://input");
     $data1 = json_decode($data, true);
@@ -75,15 +77,15 @@
         
     }
 
-    function enter_data($ip,$city,$postal,$region,$country,$loc,$timezone,$hostname,$org,$vpn,$device,$version,$browser,$info){
+    function enter_data($username,$ip,$city,$postal,$region,$country,$loc,$timezone,$hostname,$org,$vpn,$device,$version,$browser,$info){
  
         $db = getDB();
-        $stmt = $db->prepare("INSERT INTO login_data (ip,city,postal,region,country,loc,vpn,timezone,hostname,org,device,versions,browser,info) VALUES(:ip,:city,:postal,:region,:country,:loc,:vpn,:timezone,:hostname,:org,:device,:versions,:browser,:info)");
-        $stmt->execute([":ip" => $ip, ":city" => $city, ":postal" => $postal, ":region" => $region, ":country" => $country, ":loc" => $loc, ":vpn" => $vpn, ":timezone" => $timezone, ":hostname" => $hostname, ":org" => $org, ":device" => $device, ":versions" => $version, ":browser" => $browser, ":info" => $info]);
+        $stmt = $db->prepare("INSERT INTO login_data (username,ip,city,postal,region,country,loc,vpn,timezone,hostname,org,device,versions,browser,info) VALUES(:username,:ip,:city,:postal,:region,:country,:loc,:vpn,:timezone,:hostname,:org,:device,:versions,:browser,:info)");
+        $stmt->execute([":username" => $username,":ip" => $ip, ":city" => $city, ":postal" => $postal, ":region" => $region, ":country" => $country, ":loc" => $loc, ":vpn" => $vpn, ":timezone" => $timezone, ":hostname" => $hostname, ":org" => $org, ":device" => $device, ":versions" => $version, ":browser" => $browser, ":info" => $info]);
         $done = "Done";
         return $done;
         
     }
-    echo enter_data($ip,$city,$postal,$region,$country,$loc,$timezone,$hostname,$org,$vpn,$device,$version,$browser,$info);
+    echo enter_data($username,$ip,$city,$postal,$region,$country,$loc,$timezone,$hostname,$org,$vpn,$device,$version,$browser,$info);
     
 ?>
