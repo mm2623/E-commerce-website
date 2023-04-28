@@ -1,3 +1,3 @@
-# IT202-007
-## Muhammad Abdul Mannan
-### I like building stuffs. I had build a 3d Printer .
+# E-commerce website
+## By Muhammad Abdul Mannan
+### It is a fully working shop with a admin section to add new items to the shop.
